@@ -1,0 +1,41 @@
+body {
+    background-color: #b3b3b3;
+}
+
+.fotografias {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  gap: 10px;
+}
+.fotografias img{
+    width: 150px;
+    border-radius: 20px;
+}
+
+.poema {
+  :nth-child(1) {
+  background-color: rgb(18, 144, 254);
+  display: inline;
+  }
+}
+
+table, th, td {
+  border:1px solid black;
+  text-align: center;
+}
+
+th{
+  color: blue;
+}
+
+td{
+  color: rgb(4, 11, 98);
+}
+
+.fact1 {
+  :nth-child(1) {
+    background-color: rgb(18, 144, 254);
+    display: inline;
+  }
+}
