@@ -32,10 +32,3 @@ th{
 td{
   color: rgb(4, 11, 98);
 }
-
-.fact1 {
-  :nth-child(1) {
-    background-color: rgb(18, 144, 254);
-    display: inline;
-  }
-}
