@@ -1,34 +1,159 @@
-body {
-    background-color: #b3b3b3;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.fotografias {
+
+body {
+  background-color: #b3b3b3;
+}
+
+.page_title {
+  background-color: rgb(11, 77, 143);
+  margin: 0;
+  text-align: center;
+  line-height: 3;
+  font-size: 30px;
+  color: aliceblue;
+}
+
+.pages_bar {
+  margin-bottom: 13px;
+  background-color: rgb(41, 41, 41);
+  line-height: 28px;
+  text-align: center;
+}
+
+.hyperlinks_bar {
+  margin-right: 20px;
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+}
+
+.hyperlinks_bar:hover {
+  background-color: aliceblue;
+  color: rgb(41, 41, 41);
+}
+
+.page_images {
+  text-align: center;
+}
+
+.images {
+  margin-right: 20px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+
+.subtitle {
+  padding-top: 25px;
+  padding-bottom: 15px;
+  margin-right: 350px;
+  margin-left: 350px;
+  background-color: #8d8d8d;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 20px;
+
+}
+
+.footer {
+  background-color: rgb(41, 41, 41);
+  color: rgb(240, 240, 240);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: center;
+}
+
+.osloGps {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  text-align: center;
+}
+
+th {
+  color: blue;
+}
+
+td {
+  color: rgb(4, 11, 98);
+}
+
+.bar_multi {
+  text-align: center;
+}
+
+.hyperlinks_multi {
+  background-color: rgb(41, 41, 41);
+  border-radius: 15px;
+  word-spacing: 15px;
+  padding: 4px 10px;
+}
+
+.buttons_multi {
+  text-decoration: none;
+  color: rgb(240, 240, 240);
+}
+
+.buttons_multi:hover {
+  background-color: aliceblue;
+  color: rgb(41, 41, 41);
+}
+
+.subtitle_box_multi {
+  background-color: #8d8d8d;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.subtitle_multi {
+  margin: 10px;
+}
+
+.images_multi {
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
   gap: 10px;
+  padding-bottom: 5px;
 }
-.fotografias img{
-    width: 150px;
-    border-radius: 20px;
+
+.images_multi img {
+  width: 150px;
+  border-radius: 20px;
 }
 
 .poema {
   :nth-child(1) {
-  background-color: rgb(18, 144, 254);
-  display: inline;
+    background-color: rgb(18, 144, 254);
+    display: inline;
   }
 }
 
-table, th, td {
-  border:1px solid black;
-  text-align: center;
+.table_info {
+  background-color: #8d8d8d;
+  margin: auto;
 }
 
-th{
-  color: blue;
+.info_facts_color {
+  background-color: #8d8d8d;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
 }
 
-td{
-  color: rgb(4, 11, 98);
+.info_title {
+  color: #1a4e0f;
+  margin-left: 15px;
+}
+
+.info_facts {
+  margin-left: 50px;
 }
