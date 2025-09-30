@@ -1,37 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>José Cardoso</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
+
     <header>
-        <h1>Primeira Página Web!</h1>
-    </header>
-    
-    <main>
-        <p>Eis a minha primeira página Web!</p>
-        <p>
-            Na Unidade curricular de <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232" target="_blank"> Desenvolvimento de Interfaces Web </a>
-            abordaremos as seguintes tecnologias web &#127760;:
-        </p>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>React e Next.js</li>
-        </ul>
-        <p>Iremos criar soluções criativas</p>
-        <nav>
-            <ul>
-                <li><a href="lab1/index.html">Lab1</a></li>
-                <li><a href="lab2/index.html">Lab2</a></li>
-            </ul>
+        <h1 id="menuTitle">Primeira Página Web!</h1>
+        <nav class="buttons">
+            <span class="hamburguer">&#9776;>
+                <a href="#aboutMe">About Me</a>
+                <a href="#labs">Labs</a>
+                <a href="#aboutDiw">Sobre DIW</a>
+            </span>
         </nav>
-        <img src="images/diw.svg" alt="Desenvolvimento de Interfaces Web" width="300" height="255">
+    </header>
+
+
+
+
+    <main>
+        <section id="aboutMe">
+            <div class="heroDiv">
+                <h1 id="hero1">José Cardoso</h1>
+                <br>
+                <p id="hero2">Olá, sou aluno do 2º ano do curso Engenharia Informática na Universidade Lusófona! <br>
+                    Sei porgramar em <span id="colorPink">Kotlin</span>, <span id="colorYellow">Java</span> (a minha
+                    linguagem preferida) e <span id="colorBlue">C</span>, estando neste <br>
+                    momento a aprender <span id="colorOrange2">HTML</span> e <span id="colorPurple">CSS</span>. <br>
+                    <br>
+                    Esta página irá servir para mostrar o meu progresso no âmbito da cadeira de <br>
+                    <span id="colorGreen">Desenvolvimento de Interfaces Web</span>.
+                </p>
+                <br>
+                <a id="buttonProjetos" href="#labs">Ver Projetos</a>
+            </div>
+            <a href="https://www.linux.org/pages/download/" target="_blank"><img src="/images/Tux.svg.png" alt=""
+                    height="200px" class="imageLinux"></a>
+
+        </section>
+
+        <section id="labs">
+            <div class="heroDiv">
+                <h1>Projetos / Labs</h1>
+                <p id="lab2">Alguns exercícios desenvolvidos ao longo da UC.</p>
+                <br>
+                <nav>
+                    <span>
+                        <a href="lab1/index.html">Lab1</a></li>
+                        <a href="lab2/index.html">Lab2</a></li>
+                        <a href="lab3/index.html">Lab3</a></li>
+                    </span>
+                </nav>
+            </div>
+
+
+        </section>
+
+        <section id="aboutDiw">
+
+            <div class="diw">
+                <h1>Eis a minha primeira página Web!</h1>
+                <p id="texto">
+                    Na Unidade curricular de <a href="https://moodle.ensinolusofona.pt/course/view.php?id=11232"
+                        target="_blank"> Desenvolvimento de Interfaces Web </a>
+                    abordaremos as seguintes tecnologias web &#127760;:
+                </p>
+                <br>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                    <li>React e Next.js</li>
+                </ul>
+                <img src="images/diw.svg" alt="Desenvolvimento de Interfaces Web" width="300" height="255">
+            </div>
+
+
+
+        </section>
+
     </main>
 
     <footer>
@@ -39,4 +93,5 @@
     </footer>
 
 </body>
+
 </html>

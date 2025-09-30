@@ -1,3 +1,252 @@
-body {
-    background-color: #b3b3b3;
+* {
+    font-family: sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+header, section, footer {
+    display: flex;
+    font-size: 5vh;
+}
+
+#menuTitle {
+    color: aliceblue;
+    font-size:larger;
+    
+}
+
+header {
+    align-items: center;
+    background-color: rgb(106, 106, 236);
+    position: sticky;
+    height: 10vh;
+    top: 0;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    z-index: 1;
+    text-indent: 50px;
+}
+
+
+section:nth-child(1) {
+    display: flex;
+    height: 90vh;
+    background-image: url(/images/black\ background.jpg);
+    background-size: cover;
+}
+
+section:nth-child(2) {
+    display: flex;
+    height: 100vh;
+    background-color: #f370c1;
+}
+
+section:nth-child(3) {
+    height: 80vh;
+    background: #7ee755 ;
+}
+
+.heroDiv {
+    text-align: left;
+    position: relative; top: 150px; left: 200px;
+}
+
+.hamburguer {
+  display: none;
+}
+
+
+a:hover {
+  filter: brightness(90%);
+}
+
+@media (max-width: 600px) {
+    
+header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px;
+    text-indent: 0;
+    position: sticky;
+    z-index: 1;
+  }
+
+    section{
+    flex-direction: column;
+    padding: 20px;
+    height: auto;
+  }
+
+  header{
+    flex-direction: column;
+  }
+
+  header nav {
+    display: none;
+  }
+
+  header:hover nav {
+    display: flex;
+  }
+
+  .hamburguer {
+    display: block;
+  }
+
+   .heroDiv{
+    position: static;
+    margin: 20px 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  .buttons span {
+    flex-direction: column;
+    gap: 15px;
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .imageLinux {
+    display: block;
+    max-width: 100%;
+    max-height: 10vh;
+    bottom: 0;
+  }
+  
+
+  
+}
+
+.buttons span {
+    padding-left: 30px;
+    display: flex;
+    gap: 50px; 
+}
+
+.buttons a {
+    text-decoration: none;
+    color: #3f3f3f;
+}
+
+.buttons a:hover {
+    text-decoration:underline;
+}
+
+#hero1 {
+    color: aliceblue;
+    text-align: left;
+    font-size: 8vh;
+}
+
+#hero2 {
+    color: aliceblue;
+    font-size:large;
+}
+
+#hero3 {
+    color: aliceblue;
+    font-size:large;
+}
+
+.lab {
+    text-align: left;
+    position: relative; top: 150px; left: 200px;
+}
+
+#lab2 {
+    font-size:large;
+}
+
+.lab span {
+    display: flex;
+    gap: 50px;
+}
+
+.lab a {
+    text-decoration: none;
+    background-color: rgb(117, 117, 117);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#colorPink {
+    color: #f718a1;
+}
+
+#colorYellow {
+    color: #F8981D;
+}
+
+#colorBlue {
+    color: #0277cf;
+}
+
+#colorOrange2 {
+    color: #E45128;
+}
+
+#colorPurple {
+    color: #663399;
+}
+
+#colorGreen {
+    color: #2ecc19;
+}
+
+#buttonProjetos{
+    background-color:#4403db;
+    color: #b8beb5;
+    text-decoration: none;
+    padding: 7px;
+    border-radius: 10px;
+    font-size:medium; 
+    padding: 16px 45px;
+}
+.imageLinux {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.imageLinux:hover {
+    height: 250px;
+}
+
+.lab h1 {
+    font-size: 8vh;
+}
+
+.a{
+    background-color: #878787;
+}
+
+
+.diw {
+    text-align: left;
+    position: relative; top: 150px; left: 200px;
+    font-size: 3vh;
+}
+
+.diw p {
+    font-size: large;
+}
+
+.diw img {
+    display: flex;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+
+footer {
+  height: 10vh;
+  background: black;
+  color: white;
+  bottom: 0;
+  
 }
