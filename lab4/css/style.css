@@ -1,0 +1,6 @@
+#tux{
+    display: flex;
+    width: 100px;
+    transition: width 0.3s;
+    align-items: center;
+}
