@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>José Cardoso</title>
+    <link rel="stylesheet" href="/lab5/css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>JavaScript bué louco</h1>
+    </header>
+
+    <main>
+        <section>
+            <p id="passa">1. Passa por aqui!</p>
+        </section>
+
+        <section>
+            <p id="pinta">2. Pinta-me!</p>
+            <button id="red">Red</button>
+            <button id="green">Green</button>
+            <button id="blue">Blue</button>
+        </section>
+        <br>
+        <section id="section-id">
+            <label for="palavra">3. Experimenta a escrever...</label>
+            <input id="palavra" type="text">
+        </section>
+        <br>
+        <section id="section-cor">
+            <label for="texto-cor">4. Experimenta uma cor em inglês...</label>
+            <input id="texto-cor" type="text">
+            <button>submeter</button>
+        </section>
+        <br>
+        <section class="section_counter">
+            <button onclick="contador()">Counter</button>
+            <p id="counter">0</p>
+        </section>
+        <section>
+            <p>5. Escolhe uma cor</p>
+            <select name="boxColor" id="boxColor-id">
+                <option value="white">White</option>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+            </select>
+        </section>
+        <section>
+            <p>6.</p>
+            <form>
+                <input id="nome" type="text" placeholder="Insira o seu nome">
+                <input id="idade" type="text" placeholder="Insira a sua idade">
+                <input type="submit">
+                <p id="mensagem"></p>
+            </form>
+        </section>
+        <section>
+            <p id="automatic_counter">7. Automatic Counter: 0</p>
+        </section>
+
+    </main>
+
+    <script>
+        const passa = document.querySelector('#passa');
+
+        function onMouseOver() {
+            passa.textContent = "1. Obrigado por passares!"
+        }
+
+        function onMouseOut() {
+            passa.textContent = "1. Passa por aqui!";
+        }
+
+        passa.onmouseover = onMouseOver;
+        passa.onmouseout = onMouseOut;
+    </script>
+
+    <script>
+        const pinta = document.querySelector('#pinta');
+
+
+        pintaRed = function () {
+            pinta.style.color = "red";
+        }
+
+        document.querySelector('#red').onclick = pintaRed;
+        document.querySelector('#green').onclick = () => { pinta.style.color = "green"; };
+        document.querySelector('#blue').onclick = () => { pinta.style.color = "blue"; };
+        //document.querySelector('#blue').eventListener('click', () => { pinta.style.color = "blue";})
+    </script>
+
+    <script>
+
+        //vars
+        const inputColorir = document.querySelector('#palavra');
+        //const inputColorir = document.querySelector('#section-id input');
+
+        const cores = ['red', 'blue', 'green'];
+
+        let index = 0;
+
+
+        //funções/acoes/handlers
+        function colorir() {
+            inputColorir.style.background = cores[index];
+            index = (index + 1) % cores.length;
+        }
+
+        //event listener
+
+        inputColorir.onkeyup = colorir;
+    </script>
+
+    <script>
+        //vars
+        const inputCor = document.querySelector('#texto-cor');
+        const buttonCor = document.querySelector('#section-cor button');
+
+
+
+        //funções/acoes/handlers
+        function colorirBackground() {
+            document.querySelector("body").style.background = inputCor.value;
+        }
+
+        //event listener
+
+        buttonCor.onclick = colorirBackground;
+    </script>
+
+    <script>
+        if (!localStorage.getItem('counter')) {
+            localStorage.setItem('counter', 0);
+        }
+
+        function contador() {
+            let counter = localStorage.getItem('counter');
+            counter++;
+            document.querySelector('#counter').textContent = counter;
+            localStorage.setItem('counter', counter);
+        }
+        document.querySelector('#counter').textContent = localStorage.getItem('counter');
+    </script>
+
+    <script>
+        document.querySelector('#boxColor-id').onchange = function () {
+            document.querySelector('body').style.backgroundColor = this.value;
+        }
+
+    </script>
+
+    <script>
+        const nomeUser = document.getElementById('nome')
+        const idadeUser = document.getElementById('idade')
+
+        document.querySelector('form').onsubmit = (e) => {
+
+            e.preventDefault() // para não recarregar a página
+            document.getElementById('mensagem').textContent = "Olá, o " + nomeUser.value + " tem " + idadeUser.value + "!";
+        }
+    </script>
+
+    <script>
+        let counter = 0;
+        let automatic_counterText = document.getElementById('automatic_counter');
+
+        function count() {
+            counter++;
+            document.getElementById('automatic_counter').textContent = "7. Automatic Counter: " + counter;
+        }
+        setInterval(count, 1000);
+
+    </script>
+
+</body>
+
+</html>
