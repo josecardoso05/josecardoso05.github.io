@@ -139,11 +139,17 @@ function criaProdutoCesto(produto) {
     botao.textContent = 'Remove'
 
     botao.addEventListener('click', () => {
-        const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-        let indice = produtosSelecionados.indexOf(produto)
-        produtosSelecionados.splice(indice, 1);
-        localStorage.setItem('produtos-selecionados', JSON.stringify(produtosSelecionados));
-        atualizaCesto()
+        let produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+        
+        const indice = produtosSelecionados.findIndex(
+            item => item.title === produto.title && item.price === produto.price
+        );
+
+        if (indice !== -1) {
+            produtosSelecionados.splice(indice, 1);
+            localStorage.setItem('produtos-selecionados', JSON.stringify(produtosSelecionados));
+            atualizaCesto();
+        }
     });
 
 
