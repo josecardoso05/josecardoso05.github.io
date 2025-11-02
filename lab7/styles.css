@@ -1,10 +1,10 @@
 article {
-    background-color: rgb(168, 168, 168);
+    background-color: rgb(119, 119, 119);
     flex: 1 1 15%;
 }
 
 body {
-    background-color: #f5f5f5;
+    background-color: #b9b9b9;
     padding: 20px;
 }
 
