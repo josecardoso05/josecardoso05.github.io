@@ -140,7 +140,7 @@ function criaProdutoCesto(produto) {
 
     botao.addEventListener('click', () => {
         let produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-        
+
         const indice = produtosSelecionados.findIndex(
             item => item.title === produto.title && item.price === produto.price
         );
@@ -165,4 +165,45 @@ function criaProdutoCesto(produto) {
 
 
 
+document.querySelector('#final button').addEventListener('click', async () => {
+    const estudante = document.querySelector('#final input[type="checkbox"]').checked;
+    const cupao = document.querySelector('#final input[type="text"]').value.trim();
+    const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+
+    if (produtosSelecionados.length === 0) {
+        alert('O cesto está vazio!');
+        return;
+    }
+
+    const idsProdutos = produtosSelecionados.map(p => p.id);
+
+    const resposta = await fetch('https://deisishop.pythonanywhere.com/buy', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            student: estudante,
+            coupon: cupao,
+            products: idsProdutos
+        })
+    });
+
+    const dados = await resposta.json();
+
+    const secFinal = document.querySelector('#final');
+
+    //remove mensagem anterior se existir
+    const msgAnterior = secFinal.querySelector('.resultado-compra');
+    if (msgAnterior) msgAnterior.remove();
+
+    //cria nova mensagem com o resultado
+    const msg = document.createElement('div');
+    msg.classList.add('resultado-compra');
+    msg.innerHTML = `
+        <h2>Compra efetuada com sucesso!</h2>
+        <p>O valor final do pagamento é <strong>${dados.totalCost ?? dados.total}€</strong>.</p>
+        <p>A referência de pagamento é <strong>${dados.reference}</strong>.</p>
+    `;
+
+    secFinal.appendChild(msg);
+});
 
