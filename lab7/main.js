@@ -165,45 +165,45 @@ function criaProdutoCesto(produto) {
 
 
 
-document.querySelector('#final button').addEventListener('click', async () => {
-    const estudante = document.querySelector('#final input[type="checkbox"]').checked;
-    const cupao = document.querySelector('#final input[type="text"]').value.trim();
-    const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+function finalizarCompra() {
+  const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+  const estudante = document.querySelector('#final input[type="checkbox"]').checked;
+  const cupaoDesconto = document.querySelector('#final input[type="text"]').value.trim();
 
-    if (produtosSelecionados.length === 0) {
-        alert('O cesto está vazio!');
-        return;
-    }
+  const produtoIds = produtosSelecionados.map(produto => produto.id);
 
-    const idsProdutos = produtosSelecionados.map(p => p.id);
+  if (produtoIds.length === 0) {
+    alert('O cesto está vazio!');
+    return;
+  }
 
-    const resposta = await fetch('https://deisishop.pythonanywhere.com/buy', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            student: estudante,
-            coupon: cupao,
-            products: idsProdutos
-        })
+  const dadosCompra = {
+    products: produtoIds,
+    student: estudante,
+    coupon: cupaoDesconto
+  };
+
+  fetch('https://deisishop.pythonanywhere.com/buy', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(dadosCompra)
+  })
+    .then(res => res.json())
+    .then(data => {
+      const antiga = document.querySelector('#final .resultado-compra');
+      if (antiga) antiga.remove();
+
+      const resumo = document.createElement('p');
+      resumo.className = 'resultado-compra';
+      resumo.innerHTML = `
+        Valor final a pagar (com envetuais descontos): ${data.totalCost ?? data.total}€<br>
+        Referência de pagamento: ${data.reference}
+      `;
+
+      document.querySelector('#final').appendChild(resumo);
     });
+}
 
-    const dados = await resposta.json();
+const botaoCompra = document.querySelector('#final button')
 
-    const secFinal = document.querySelector('#final');
-
-    //remove mensagem anterior se existir
-    const msgAnterior = secFinal.querySelector('.resultado-compra');
-    if (msgAnterior) msgAnterior.remove();
-
-    //cria nova mensagem com o resultado
-    const msg = document.createElement('div');
-    msg.classList.add('resultado-compra');
-    msg.innerHTML = `
-        <h2>Compra efetuada com sucesso!</h2>
-        <p>O valor final do pagamento é <strong>${dados.totalCost ?? dados.total}€</strong>.</p>
-        <p>A referência de pagamento é <strong>${dados.reference}</strong>.</p>
-    `;
-
-    secFinal.appendChild(msg);
-});
-
+botaoCompra.onclick = finalizarCompra
