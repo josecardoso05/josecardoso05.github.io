@@ -1,113 +1,105 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    if (!localStorage.getItem('produtos-selecionados')) {
-        localStorage.setItem('produtos-selecionados', JSON.stringify([]));
+    if (!localStorage.getItem('produtos_selecionados')) {
+        localStorage.setItem('produtos_selecionados', JSON.stringify([]));
     }
 
-    carregarProdutos(produtos)
+    carregarProdutos(produtos);
     atualizaCesto();
+
 })
 
+
 function carregarProdutos(produtos) {
-    const artigo = document.querySelector('#produtos');
+    const produtoSection = document.querySelector('#produtos');
 
     produtos.forEach(p => {
-        artigo.appendChild(criarProduto(p))
+        const produto = criarProduto(p);
+        produtoSection.appendChild(produto);
     });
 }
 
+
 function criarProduto(produto) {
-    const artigo = document.createElement('article');
 
-    const titulo = document.createElement('h1');
-    titulo.textContent = produto.title;
+    const article = document.createElement('article');
 
-    const preco = document.createElement('p');
-    preco.textContent = 'Custo total: ' + produto.price + '€';
+    const title = document.createElement('h1');
+    title.innerHTML = produto.title;
 
-    const descricao = document.createElement('p');
-    descricao.textContent = produto.description;
+    const image = document.createElement('img');
+    image.src = produto.image;
+    image.alt = produto.title;
 
-    const categoria = document.createElement('p');
-    categoria.textContent = produto.category;
+    const price = document.createElement('p');
+    price.innerHTML = `${produto.price}€`;
 
-    const imagem = document.createElement('img');
-    imagem.src = produto.image;
-    imagem.alt = produto.title;
+    const description = document.createElement('p');
+    description.innerHTML = produto.description;
 
-    const botao = document.createElement('button');
-    botao.textContent = '+ Adicionar ao Cesto'
+    const button = document.createElement('button');
+    button.innerHTML = '+ Adicioanr ao cesto'
 
-    botao.addEventListener('click', () => {
-        const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
+    article.appendChild(title);
+    article.appendChild(image);
+    article.appendChild(price);
+    article.appendChild(description);
+    article.appendChild(button);
+
+    button.addEventListener('click', () => {
+        let produtosSelecionados = JSON.parse(localStorage.getItem('produtos_selecionados'));
 
         produtosSelecionados.push(produto);
 
-        localStorage.setItem('produtos-selecionados', JSON.stringify(produtosSelecionados));
+        localStorage.setItem('produtos_selecionados', JSON.stringify(produtosSelecionados));
 
         atualizaCesto();
-    });
+    })
 
-    artigo.appendChild(titulo)
-    artigo.appendChild(imagem)
-    artigo.appendChild(descricao)
-    artigo.appendChild(preco)
-    artigo.appendChild(botao)
-
-    return artigo;
+    return article;
 }
 
+
 function atualizaCesto() {
-    const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
     const cesto = document.querySelector('#cesto');
     cesto.innerHTML = '';
 
-    produtosSelecionados.forEach(p => {
-        const artigo = criaProdutoCesto(p);
-        cesto.appendChild(artigo);
-        produtosSelecionados.setItem = cesto;
-    });
+    const produtosSelecionados = JSON.parse(localStorage.getItem('produtos_selecionados'));
+
+    produtosSelecionados.forEach((p, index) => {
+        cesto.appendChild(criaProdutoCesto(p, index));
+    })
 }
 
-function criaProdutoCesto(produto) {
-    const artigo = document.createElement('article');
+function criaProdutoCesto(produto, index) {
 
+    const article = document.createElement('article');
 
-    const titulo = document.createElement('h1');
-    titulo.textContent = produto.title;
+    const title = document.createElement('h1');
+    title.innerHTML = produto.title;
 
-    const preco = document.createElement('p');
-    preco.textContent = 'Custo total: ' + produto.price + '€';
+    const image = document.createElement('img');
+    image.src = produto.image;
+    image.alt = produto.title;
 
-    const imagem = document.createElement('img');
-    imagem.src = produto.image;
-    imagem.alt = produto.title;
+    const price = document.createElement('p');
+    price.innerHTML = `Custo: ${produto.price}€`;
 
-    const botao = document.createElement('button');
-    botao.textContent = 'Remove'
+    const button = document.createElement('button');
+    button.innerHTML = '- Remover artigo';
 
-    botao.addEventListener('click', () => {
-        const produtosSelecionados = JSON.parse(localStorage.getItem('produtos-selecionados')) || [];
-        let indice = produtosSelecionados.indexOf(produto)
-        produtosSelecionados.splice(indice, 1);
-        localStorage.setItem('produtos-selecionados', JSON.stringify(produtosSelecionados));
-        atualizaCesto()
-    });
+    article.appendChild(title);
+    article.appendChild(image);
+    article.appendChild(price);
+    article.appendChild(button);
 
+    button.addEventListener('click', () => {
+        const produtosSelecionados = JSON.parse(localStorage.getItem('produtos_selecionados'));
 
+        produtosSelecionados.splice(index, 1);
+        localStorage.setItem('produtos_selecionados', JSON.stringify(produtosSelecionados));
+        atualizaCesto();
+    })
 
-    artigo.appendChild(titulo);
-    artigo.appendChild(imagem);
-    artigo.appendChild(preco);
-    artigo.appendChild(botao);
-
-
-    //fazer preço total
-
-
-    return artigo;
+    return article;
 }
-
-
-
-

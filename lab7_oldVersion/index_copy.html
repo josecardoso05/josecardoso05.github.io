@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universidades</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+
+    <header>
+        <h1>Universidades</h1>
+    </header>
+
+    <main>
+        <div id="map" style="height: 400px;">
+            <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        </div>
+        <ul></ul>
+    </main>
+
+    <script>
+        // Liste os nomes das universidades existentes na Área Metropolitana de Lisboa 
+        // disponíveis no endpoint https://api.carrismetropolitana.pt/v2/facilities/schools
+
+        // A. Variables
+
+        let universities = []
+        let escolasPrimarias = []
+        const ul = document.querySelector('ul')
+
+        const map = L.map('map').setView([38.7169, -9.1399], 10); // centro em Lisboa
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+
+
+
+        // B. Fetch data
+        fetch('https://api.carrismetropolitana.pt/v2/facilities/schools')
+            .then(response => response.json())
+            .then(data => {
+                universities = data
+
+                pesquisaEscolasPrimarias(universities)
+            })
+
+        // C. Render Data
+        function render(universities) {
+            universities.forEach(p => {
+                const li = document.createElement('li')
+                li.textContent = p.name
+                ul.appendChild(li)
+            })
+        }
+
+        function pesquisaEscolasPrimarias(universidades) {
+            universidades.forEach(escola => {
+                if (escola.cicles.includes('basic_1')) {
+                    escolasPrimarias.push(escola)
+                }
+            })
+            escolasPrimarias.sort((a, b) => a.name.localeCompare(b.name))
+
+            escolasPrimarias.forEach(escola => {
+                const li = document.createElement('li')
+                li.textContent = escola.name
+                ul.appendChild(li)
+            })
+
+            const locais = escolasPrimarias.map(escola => ({
+                nome: escola.name, coord: [escola.lat, escola.lon]
+            }))
+
+            locais.forEach(local => {
+                const m = L.marker(local.coord).addTo(map)
+                m.bindPopup(local.nome);
+            });
+
+        }
+
+    </script>
+
+</body>

@@ -1,0 +1,28 @@
+article {
+    background-color: rgb(119, 119, 119);
+    flex: 1 1 15%;
+}
+
+body {
+    background-color: #b9b9b9;
+    padding: 20px;
+}
+
+#produtos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+article img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+#cesto {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 25px;
+}

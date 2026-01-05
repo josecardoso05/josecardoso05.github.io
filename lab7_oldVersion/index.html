@@ -1,13 +1,13 @@
+</html>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/lab7/styles.css">
     <title>Loja</title>
 </head>
-
 <body>
     <header>
         <h1>Loja</h1>
@@ -17,22 +17,18 @@
                 <li><a href="#cesto">Cesto</a></li>
             </ul>
         </nav>
-
         <select name="categorias" id="categorias">
             <option value="todasCategorias">Todas as categorias</option>
-            <option value="T-shirts">T-shirts</option>
+            <option value="T-shirts">T-Shirts</option>
             <option value="Canecas">Canecas</option>
             <option value="Meias">Meias</option>
         </select>
-
         <select name="preco" id="preco">
             <option value="todosPrecos">Ordenar pelo preço</option>
-            <option value="Decrescente">Preço Decrescente</option>
-            <option value="Crescente">Preço Crescente</option>
+            <option value="decrescente">Preço Decrescente</option>
+            <option value="crescente">Preço Crescente</option>
         </select>
-
-        <input type="text" placeholder="Escreve o que procuras..." id="pesquisa">
-
+        <input type="text" id="pesquisa">
     </header>
 
     <main>
@@ -42,24 +38,23 @@
         <section id="cesto">
         </section>
 
-        <section id="final">
-            <label for="checkbox">És estudante do DEISI?
-                <input type="checkbox" id="estudanteBox">
-            </label>
-            <br>
-            <label for="text">Cupão de desconto</label>
-            <input type="text" id="cupaoText">
-            <br>
-            <button id="comprarButton">Comprar</button>
+        <section id="checkout">
         </section>
 
-        <section id="resultadoCompra"></section>
-
+        <section id="final">
+            <label for="checkbox">És estudante do DEISI?</label>
+            <input type="checkbox">
+            <br>
+            <label for="text">Cupão de desconto</label>
+            <input type="text">
+            <br>
+            <button>Comprar</button>
+            
+        </section>
     </main>
 
     <footer></footer>
-
+    
     <script src="/lab7/main.js"></script>
 </body>
-
 </html>
