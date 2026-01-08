@@ -27,6 +27,7 @@ async function fetchProdutos(url) {
         filtra();
     })
 
+    //filtrar por texto
     const pesquisaFiltro = document.querySelector('#pesquisa');
     pesquisaFiltro.addEventListener('input', () => filtra());
 
@@ -39,7 +40,7 @@ function filtra() {
     let produtosFiltrados = data;
     const categoria = document.querySelector('#categorias').value;
     const precoFiltro = document.querySelector('#preco').value;
-    const pesquisaFiltro = document.querySelector('#pesquisa');
+    const pesquisaFiltro = document.querySelector('#pesquisa').value;
 
     if (categoria !== 'todasCategorias') {
         produtosFiltrados = produtosFiltrados.filter(p => p.category === categoria);
@@ -54,7 +55,7 @@ function filtra() {
     }
 
 
-    produtosFiltrados = produtosFiltrados.filter(p => p.title.toLowerCase().includes(pesquisaFiltro.value.toLowerCase()))
+    produtosFiltrados = produtosFiltrados.filter(p => p.title.toLowerCase().includes(pesquisaFiltro.toLowerCase()))
 
 
     carregarProdutos(produtosFiltrados);
@@ -81,7 +82,7 @@ function criarProduto(produto) {
     title.innerHTML = produto.title;
 
     const image = document.createElement('img');
-    image.src = produto.image;
+    image.src = "https://deisishop.pythonanywhere.com/" + produto.image;
     image.alt = produto.title;
 
     const price = document.createElement('p');
@@ -91,7 +92,7 @@ function criarProduto(produto) {
     description.innerHTML = produto.description;
 
     const button = document.createElement('button');
-    button.innerHTML = '+ Adicioanr ao cesto'
+    button.innerHTML = '+ Adicionar ao cesto'
 
     article.appendChild(title);
     article.appendChild(image);
@@ -132,7 +133,7 @@ function criaProdutoCesto(produto, index) {
     title.innerHTML = produto.title;
 
     const image = document.createElement('img');
-    image.src = produto.image;
+    image.src = "https://deisishop.pythonanywhere.com/" + produto.image;
     image.alt = produto.title;
 
     const price = document.createElement('p');
